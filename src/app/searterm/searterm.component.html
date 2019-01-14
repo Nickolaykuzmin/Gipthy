@@ -1,0 +1,18 @@
+<pre class="text-center">Input some keywords to find GIF: <span style="color:red;">code, programming, business, relax</span></pre>
+<form class="search-form" #form='ngForm'>
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="search-form__input">
+      <input (keyup.enter)="searchTerm(search.value)" [(ngModel)]="search" type="text" class="form-control" name="search"
+        id="search">
+    </div>
+    <div class="search-form__button">
+      <button (click)="searchTerm(search.value)" class="btn btn-primary" type="button">Search</button>
+    </div>
+  </div>
+</form>
+
+<section class="result">
+  <div class="container">
+    <div #outer class="outer-result row"></div>
+  </div>
+</section>

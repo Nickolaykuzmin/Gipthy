@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+body {
+  padding-top: 20px;
+}
+.search-form {
+    margin-bottom: 50px;;
+}
+
+.search-form .search-form__input {
+  padding-right: 10px;
+}
+
+.search-form .search-form__button {
+  padding: 10px;
+}
