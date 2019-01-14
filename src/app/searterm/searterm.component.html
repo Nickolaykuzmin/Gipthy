@@ -1,18 +1,49 @@
-<pre class="text-center">Input some keywords to find GIF: <span style="color:red;">code, programming, business, relax</span></pre>
-<form class="search-form" #form='ngForm'>
-  <div class="d-flex justify-content-center align-items-center">
-    <div class="search-form__input">
-      <input (keyup.enter)="searchTerm(search.value)" [(ngModel)]="search" type="text" class="form-control" name="search"
-        id="search">
+<div class="container-fluid">
+    <h3 class="text-center">What are you looking for?</h3>
+    <p class="text-center">Please enter some word in form:</p>
+    <p class="text-center">
+        EX:
+        <span style="color: red">
+            Business,Code,Frontend,Backend,Smile,Money
+        </span>
+    </p>
+    <p style="color: red;"></p>
+</div>
+<form
+    class="search-form"
+    #form='ngForm'
+>
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="search-form__input">
+            <input
+                required
+                (keyup.enter)="searchTerm(search.value)"
+                [(ngModel)]="search"
+                #searchText='ngModel'
+                type="text"
+                class="form-control"
+                name="search"
+                id="search"
+            >
+        </div>
+        <div class="search-form__button">
+            <button
+                [attr.disabled]="(searchText.valid && searchText.touched) ? null : ''"
+                (click)="searchTerm(search.value)"
+                class="btn btn-primary"
+                type="button"
+            >
+                Search
+            </button>
+        </div>
     </div>
-    <div class="search-form__button">
-      <button (click)="searchTerm(search.value)" class="btn btn-primary" type="button">Search</button>
-    </div>
-  </div>
 </form>
 
 <section class="result">
-  <div class="container">
-    <div #outer class="outer-result row"></div>
-  </div>
+    <div class="container">
+        <div
+            #outer
+            class="outer-result row"
+        ></div>
+    </div>
 </section>

@@ -14,6 +14,7 @@ import { SearchService } from '../search.service';
 })
 export class SeartermComponent implements OnInit {
   @ViewChild('outer') outer: ElementRef;
+  arrResult = [];
 
   constructor(private searchService: SearchService) {}
 
@@ -26,7 +27,8 @@ export class SeartermComponent implements OnInit {
       if (result.data.length) {
         console.log(result);
         const count = result.data.length;
-        const lengthResult = Math.floor(Math.random() * count);
+        let lengthResult = Math.floor(Math.random() * count);
+        lengthResult = this.uniqueResult(lengthResult, count);
         this.outer.nativeElement.insertAdjacentHTML(
           'beforeend',
           `<div class="col-md-4 col-12 mb-4"><img height="344px" class="w-100" src="${
@@ -35,6 +37,17 @@ export class SeartermComponent implements OnInit {
         );
       }
     });
-    // console.log(search);
+  }
+
+  private uniqueResult(lengthResult: number, count: any) {
+    if (this.arrResult.length) {
+      let i = 0;
+      while (this.arrResult.includes(lengthResult)) {
+        lengthResult = Math.floor(Math.random() * count);
+        i++;
+      }
+    }
+    this.arrResult.push(lengthResult);
+    return lengthResult;
   }
 }
